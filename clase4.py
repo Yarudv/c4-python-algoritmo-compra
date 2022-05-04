@@ -1,10 +1,17 @@
-
+import sched
+import time
 stock_producto_1 = 120
 stock_producto_2 = 150
 contador = 0
 
+def controltime(tiempo, mensaje):
+    cada_cuanto = sched.scheduler(time.time, time.sleep)
+    cada_cuanto.enterabs(tiempo,1,print,argument=(mensaje,))
+    print("Bienvenidos")
+    cada_cuanto.run()
 
 while True: 
+    controltime(time.time()+3,"Ejecutando aplicación de compra")
     compra_producto = int(input("¿Qué producto desea comprar? (1/2):"))
     if compra_producto == 1:
         cantidad_1 = int(input("Ingrese cantidad a comprar del producto_1: " ))
